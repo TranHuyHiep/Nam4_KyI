@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -67,11 +68,25 @@ void dfs(char start, char finish) {
 		}
 		cout << endl;
 	}
+=======
+#include<iostream>
+using namespace std;
+
+int a[26][26];
+char start, finish, tempX, tempY;
+
+void dfs(char start, char finish) {
+	
+>>>>>>> e0209751a1ed3ec5125346ad29408780800bd103
 }
 
 int main() {
 	freopen("input.txt", "r", stdin);
+<<<<<<< HEAD
 	freopen("output.txt", "w", stdout);
+=======
+	
+>>>>>>> e0209751a1ed3ec5125346ad29408780800bd103
 	cin >> start >> finish;
 	for(int i = 0; i < 100; i++) {
 		cin >> tempX >> tempY;
