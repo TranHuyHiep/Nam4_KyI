@@ -1,0 +1,16 @@
+Phat trien TT |  Trang thai ke  | Danh sach L
+----------------------------------------------
+A             |B C D       		|D C B 
+D             |C F         		|F C C B 
+F             |K           		|K C C B 
+K             |            		|C C B 
+C             |E F         		|F E C B 
+F             |K           		|K E C B 
+K             |            		|E C B 
+E             |G K         		|K G C B 
+K             |            		|G C B 
+G             |
+----------------------------------------------
+
+Ket qua cua duong di DFS la:
+A -> C -> E -> G
