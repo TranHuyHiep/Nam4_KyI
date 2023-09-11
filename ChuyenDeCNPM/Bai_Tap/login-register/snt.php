@@ -12,13 +12,14 @@
         $num = $_POST["num"];
     
         if ($num != "") {
-            $ketqua = $num."Day la so nguyen to";
+            
 
             function snt($a) {
+                $ketqua = $a . " Day la so nguyen to";
                 for($i=2; $i < $a; $i++) {
-                    if($a % i == 0) {
+                    if($a % $i == 0) {
                         echo "so chia het: " .$i. "<br>";
-                        $ketqua = $a."Khong la so nguyen to";
+                        $ketqua = $a . " Khong la so nguyen to";
                     }
                 }
                 echo $ketqua;
