@@ -11,7 +11,7 @@ class BreathFirstSearch{
 queue<string> Q;
 queue<string> temp;
 map<string, int> visit;
-map<string, vector<string>> graph;
+map<string, vector<string> > graph;
 map<string, string> revert;
 string start, stop;
 public:
