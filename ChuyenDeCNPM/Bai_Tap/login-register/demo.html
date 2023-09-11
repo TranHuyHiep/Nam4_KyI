@@ -42,6 +42,10 @@
             padding: 5px;
             border-radius: 5px;
         }
+
+        .error {
+            color: red;
+        }
     </style>
 </head>
 
@@ -52,10 +56,12 @@
             <div class="form-group">
                 <label for="hoTen">Họ và tên</label>
                 <input type="text" name="hoTen" id="hoTen" class="form-control" size="50">
+                <span id="hoTenError" class="error"></span>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email" class="form-control" size="50">
+                <span id="emailError" class="error"></span>
             </div>
             <div class="form-group">
                 <label for="sex">Giới tính</label><br>
@@ -65,6 +71,7 @@
                     <input type="radio" id="nu" name="gioiTinh" value="nu">
                     <label for="nu">Nữ</label>
                 </div>
+                <span id="gioiTinhError" class="error"></span>
             </div>
             <div class="form-group">
                 <label for="favorit">Sở thích</label><br>
@@ -80,6 +87,7 @@
                     <input type="checkbox" id="khac" name="soThich" value="khac">
                     <label for="khac">Khác</label>
                 </div>
+                <span id="soThichError" class="error"></span>
             </div>
             <div class="form-group">
                 <label for="qt">Quốc tịch</label><br>
@@ -89,6 +97,7 @@
                     <option value="Duc">Đức</option>
                     <option value="My">Mỹ</option>
                 </select>
+                <span id="quocTichError" class="error"></span>
             </div>
             <div class="form-group">
                 <label for="ghiChu">Ghi chú</label>
@@ -106,6 +115,11 @@
         var email = document.getElementById("email");
         var gioiTinh = document.getElementsByName("gioiTinh");
         var soThich = document.getElementsByName("soThich");
+        
+        var hoTenError = document.getElementById("hoTenError")
+        var emailError = document.getElementById("emailError")
+        var gioiTinhError = document.getElementById("gioiTinhError")
+        var soThichError = document.getElementById("soThichError")
 
         var hoTenValue = hoTen.value;
         var emailValue = email.value;
@@ -115,15 +129,19 @@
         // check name
         if (hoTenValue == "") {
             hoTen.style.backgroundColor = "yellow";
+            hoTenError.innerHTML = "Tên không được để trống"
         } else {
             hoTen.style.backgroundColor = "";
+            hoTenError.innerHTML = ""
         }
 
         // check email
         if (emailValue == "") {
             email.style.backgroundColor = "yellow";
+            emailError.innerHTML = "Email không được để trống"
         } else {
             email.style.backgroundColor = "";
+            emailError.innerHTML = ""
         }
 
         // check sex
@@ -136,8 +154,10 @@
 
         if (!gioiTinhValue) {
             document.getElementById("gioiTinh").style.backgroundColor = "yellow"
+            gioiTinhError.innerHTML = "Vui lòng chọn giới tính"
         } else {
             document.getElementById("gioiTinh").style.backgroundColor = ""
+            gioiTinhError.innerHTML = ""
         }
 
         // check favorite
@@ -150,8 +170,11 @@
 
         if (!soThichValue) {
             document.getElementById("soThich").style.backgroundColor = "yellow"
+            soThichError.innerHTML = "Vui lòng chọn 1 sở thích"
+            
         } else {
             document.getElementById("soThich").style.backgroundColor = ""
+            soThichError.innerHTML = ""
         }
 
         event.preventDefault();
