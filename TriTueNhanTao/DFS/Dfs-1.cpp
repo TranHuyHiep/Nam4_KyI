@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 
 string start, finish, tempX, tempY;
@@ -73,13 +74,28 @@ class Dfs {
 
 int main() {
 	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
+	//freopen("output.txt", "w", stdout);
 	cin >> start >> finish;
 	for(int i = 0; i < 100; i++) {
-		cin >> tempX >> tempY;
+		string temp, t;
+		int count = 0;
+		cin >> temp;
+		stringstream ss(temp);
+		
+		while(getline(ss, t, ',')) {
+			if(count == 0) {
+				tempX = t;
+			} else {
+				tempY = t;
+				a[tempX].push_back(tempY);
+				cout << tempX << " " << tempY << endl;
+			}
+			count++;
+		}
+		
 		father[tempX] = tempX;
 		father[tempY] = tempY;
-		a[tempX].push_back(tempY);
+		
 	}	 
 	Dfs d;
 	d.dfs(start, finish);

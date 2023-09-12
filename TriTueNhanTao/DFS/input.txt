@@ -1,14 +1,8 @@
 A1 G1
-A1 B 
-A1 C
-A1 D
-B I
-B G1
-C E 
-C F
-D C 
-D F
-E G1 
-E K
-F K
-I G1
+A1,B,C,D
+B,I,G1
+C,E,F
+D,C,F,G1 
+E,K
+F,K
+I,G1
