@@ -32,8 +32,6 @@ class Dfs {
 		}	 
 	}
 	void dfs(string start, string finish) {
-		bool theEnd = false;
-		
 		stack<pair<int, string>> st;
 		st.push({0, start});
 		dsL.push_back({0, start});	
@@ -43,6 +41,12 @@ class Dfs {
 		while(!st.empty()) {
 			pair<int, string> temp = st.top();	
 			cout << temp.second << "-" << temp.first << "\t|";
+			cout << right << setw(8) << "|" 
+					<< right << setw(8) << "|" 
+					<< right << setw(8) << "|" 
+					<< right << setw(8) << "|" 
+					<< right << setw(8) << "|" 
+					<< right << setw(24) << "|";
 			dsL.pop_back();
 			st.pop();		
 			
@@ -56,16 +60,14 @@ class Dfs {
 				}
 				
 				if(temp.first <= minPath) {
-					theEnd = true;
-					cout << "Trang thai ket thuc tim duoc duoc di tam thoi do dai " << temp.first << right << setw(9) << "|";
+					findPath(start, finish, temp.first);
+					return;
 				} else {
-					cout << "Trang thai ket thuc tim duoc duoc di tam thoi do dai " << temp.first << right << setw(9) << "|";
+					cout << "\n\t|Trang thai ket thuc tim duoc duoc di tam thoi do dai " << minPath;
 				}
 			}
 			
 			multimap<int, string> dsL1;
-			
-			int count = 0;
 			
 			//ds ke
 			for(auto dinhKe : a[temp.second]) {
@@ -78,44 +80,16 @@ class Dfs {
 				
 				int f = g + trongSo[dinhKe.first];
 				
-				if(a[temp.second].size() == 1) {
-					cout << left << setw(7) << dinhKe.first << "|" 
-						<< left << setw(7) << dinhKe.second <<"|" 
-						<< left << setw(7) << trongSo[dinhKe.first] << "|" 
-						<< left << setw(7) << g << "|" 
-						<< left << setw(7) << f << "|";
-				}
-				else if(count == 0) {
-					cout << left << setw(7) << dinhKe.first << "|" 
-						<< left << setw(7) << dinhKe.second <<"|" 
-						<< left << setw(7) << trongSo[dinhKe.first] << "|" 
-						<< left << setw(7) << g << "|" 
-						<< left << setw(7) << f
-						<< left << setw(24) << "|"
-						<< "|";
-				} else if(count == a[temp.second].size() - 1) {
-					cout << endl 
-						<< right << setw(9) << "|" 
-						<< left << setw(7) << dinhKe.first << "|" 
-						<< left << setw(7) << dinhKe.second <<"|" 
-						<< left << setw(7) << trongSo[dinhKe.first] << "|" 
-						<< left << setw(7) << g << "|" 
-						<< left << setw(7) << f << "|";
-				} else {
-					cout << endl 
-						<< right << setw(9) << "|" 
-						<< left << setw(7) << dinhKe.first << "|" 
-						<< left << setw(7) << dinhKe.second <<"|" 
-						<< left << setw(7) << trongSo[dinhKe.first] << "|" 
-						<< left << setw(7) << g << "|" 
-						<< left << setw(7) << f
-						<< left << setw(24) << "|"
-						<< "|";
-				}
-				
+				cout << endl 
+					<< right << setw(9) << "|" 
+					<< left << setw(7) << dinhKe.first << "|" 
+					<< left << setw(7) << dinhKe.second <<"|" 
+					<< left << setw(7) << trongSo[dinhKe.first] << "|" 
+					<< left << setw(7) << g << "|" 
+					<< left << setw(7) << f
+					<< left << setw(24) << "|"
+					<< "|";
 				dsL1.insert({f, dinhKe.first});
-				
-				count++;
 			}
 			
 			// ds L1
@@ -125,7 +99,15 @@ class Dfs {
     		}
     		
     		if(str != "") {
-    			cout << left << setw(23) << str << "|";
+    			cout << endl 
+				<< right << setw(9) << "|" 
+				<< right << setw(8) << "|" 
+				<< right << setw(8) << "|" 
+				<< right << setw(8) << "|" 
+				<< right << setw(8) << "|" 
+				<< right << setw(8) << "|" 
+				<< left << setw(23) << str
+				<< "|";
 			}
 
 			for (auto it = dsL1.rbegin(); it != dsL1.rend(); ++it) {
@@ -140,12 +122,15 @@ class Dfs {
 				str += dsL[i].second + "-" + to_string(dsL[i].first) + " ";
 			}
 			
-			cout << left << setw(30) << str;
-			
-			if(theEnd) {
-				findPath(start, finish, temp.first);
-				return;
-			}
+			cout << endl
+				<< right << setw(9) << "|" 
+				<< right << setw(8) << "|" 
+				<< right << setw(8) << "|" 
+				<< right << setw(8) << "|" 
+				<< right << setw(8) << "|" 
+				<< right << setw(8) << "|" 
+				<< right << setw(24) << "|"
+				<< left << setw(30) << str;
 			
 			cout << "\n===========================================================================================================\n";
 		}
